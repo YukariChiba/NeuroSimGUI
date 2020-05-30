@@ -1149,7 +1149,7 @@ class Ui_MainWindow(object):
         self.label_44.setText(_translate("MainWindow", "nColMux"))
         self.label_45.setText(_translate("MainWindow", "nWriteColMux"))
         self.nBitInput.setText(_translate("MainWindow", "1"))
-        self.nBitPartial.setText(_translate("MainWindow", "9"))
+        self.nBitPartial.setText(_translate("MainWindow", "8"))
         self.nWBit.setText(_translate("MainWindow", "6"))
         self.BWthres.setText(_translate("MainWindow", "0.5"))
         self.Hthres.setText(_translate("MainWindow", "0.5"))
