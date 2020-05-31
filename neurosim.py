@@ -12,7 +12,10 @@ class NeuroSim():
         if arg_val != None:
             val = arg_val
         elif isinstance(comp, QCheckBox):
-            val = comp.isChecked()
+            if comp.isChecked():
+                val = "true" 
+            else: 
+                return
         else:
             val = getattr(self.window,arg_str).text()
         self.arg = self.arg + " --{} {}".format(arg_str, val)

@@ -1089,7 +1089,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(3)
         self.tabWidget_2.setCurrentIndex(4)
         self.tabWidget_3.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -1367,7 +1367,7 @@ class Ui_MainWindow(object):
         self.label_10.setText(_translate("MainWindow", "readEnergySRAMCell"))
         self.HODevReadEnergySRAMCell.setText(_translate("MainWindow", "0"))
         self.label_116.setText(_translate("MainWindow", "widthSRAMCellPMOS"))
-        self.HODevWidthSRAMCellPMOS.setText(_translate("MainWindow", "2.08"))
+        self.HODevWidthSRAMCellPMOS.setText(_translate("MainWindow", "1.23"))
         self.label_117.setText(_translate("MainWindow", "widthAccessCMOS"))
         self.label_118.setText(_translate("MainWindow", "minSenseVoltage"))
         self.HODevWidthAccessCMOS.setText(_translate("MainWindow", "1.31"))
