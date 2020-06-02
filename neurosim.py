@@ -18,7 +18,10 @@ class NeuroSim():
                 return
         else:
             val = getattr(self.window,arg_str).text()
-        self.arg = self.arg + " --{} {}".format(arg_str, val)
+        if val == "true":
+            self.arg = self.arg + " --{}".format(arg_str)
+        else:
+            self.arg = self.arg + " --{} {}".format(arg_str, val)
 
     def execute(self):
-        return self.bin + self.arg
+        return "stdbuf -o 0 {}{}".format(self.bin, self.arg)

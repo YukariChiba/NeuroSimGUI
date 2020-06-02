@@ -1,8 +1,11 @@
+#!/usr/bin/python3
+
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QButtonGroup
 from main_layout import *
 from neurosim import NeuroSim
 from PyQt5.QtCore import QProcess
+from time import gmtime, strftime
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -125,15 +128,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.exit.clicked.connect(self.close)
 
         self.process = QProcess(self)
-        self.process.setProcessChannelMode(QProcess.ForwardedChannels)
+        self.process.setProcessChannelMode(QProcess.MergedChannels)
         self.process.started.connect(lambda: self.execute.setEnabled(False)) 
         self.process.finished.connect(lambda: self.execute.setEnabled(True)) 
         self.process.readyRead.connect(self.dataReady)
 
+        self.outfile = "log_{}.txt".format(strftime("%Y-%m-%d-%H-%M-%S", gmtime()))
+
     def dataReady(self):
         cursor = self.output.textCursor() 
         cursor.movePosition(cursor.End) 
-        cursor.insertText(str(self.process.readAll()) + "\n") 
+        tmp_str = str(self.process.readAll(), encoding = "utf-8")
+        cursor.insertText(tmp_str) 
+        with open(self.outfile, "w") as f:
+            f.write(tmp_str)
         self.output.ensureCursorVisible() 
 
     def run_app(self):
@@ -148,7 +156,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ns.add_arg("HODev"+arg)
         #print(ns.execute())
         self.process.start(ns.execute())
-        #self.process.start("ping 127.0.0.1")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
